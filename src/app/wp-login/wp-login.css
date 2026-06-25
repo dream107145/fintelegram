@@ -1,0 +1,182 @@
+.wp-login-page {
+  min-height: 100vh;
+  background: #f0f0f1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #3c434a;
+}
+
+.wp-login-page #login {
+  width: 320px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.wp-login-page .wp-login-logo {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.wp-login-page .wp-login-logo a {
+  display: inline-block;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.wp-login-page .wp-login-logo img {
+  width: 84px;
+  height: 84px;
+}
+
+.wp-login-page .wp-login-form {
+  margin-top: 20px;
+  margin-left: 0;
+  padding: 26px 24px 34px;
+  font-weight: 400;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.wp-login-page .wp-login-error {
+  border-left: 4px solid #d63638;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  font-size: 13px;
+}
+
+.wp-login-page .wp-login-error strong {
+  font-weight: 600;
+}
+
+.wp-login-page .wp-login-error a {
+  color: #2271b1;
+}
+
+.wp-login-page label {
+  display: block;
+  font-size: 14px;
+  line-height: 1.3;
+  margin-bottom: 3px;
+  color: #3c434a;
+}
+
+.wp-login-page input[type="text"],
+.wp-login-page input[type="password"] {
+  font-size: 24px;
+  line-height: 1.33333333;
+  width: 100%;
+  border: 1px solid #8c8f94;
+  background: #fff;
+  color: #2c3338;
+  padding: 3px 8px;
+  margin: 0 6px 16px 0;
+  min-height: 40px;
+  max-height: none;
+  box-shadow: 0 0 0 transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.wp-login-page input[type="text"]:focus,
+.wp-login-page input[type="password"]:focus {
+  border-color: #2271b1;
+  box-shadow: 0 0 0 1px #2271b1;
+  outline: 2px solid transparent;
+}
+
+.wp-login-page .wp-login-remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.wp-login-page .wp-login-remember input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.wp-login-page .wp-login-submit {
+  float: right;
+  background: #2271b1;
+  border-color: #2271b1;
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 2.15384615;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  box-shadow: 0 1px 0 #0000000a;
+}
+
+.wp-login-page .wp-login-submit:hover {
+  background: #135e96;
+  border-color: #135e96;
+  color: #fff;
+}
+
+.wp-login-page .wp-login-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.wp-login-page .wp-login-lost {
+  margin: 16px 0 0;
+  font-size: 13px;
+}
+
+.wp-login-page .wp-login-lost a {
+  color: #50575e;
+  text-decoration: none;
+}
+
+.wp-login-page .wp-login-lost a:hover {
+  color: #135e96;
+}
+
+.wp-login-page .wp-login-back {
+  margin: 16px 0 0;
+  font-size: 13px;
+  text-align: center;
+}
+
+.wp-login-page .wp-login-back a {
+  color: #50575e;
+  text-decoration: none;
+}
+
+.wp-login-page .wp-login-back a:hover {
+  color: #135e96;
+}
+
+.wp-login-page .wp-login-powered {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.wp-login-page .wp-login-powered a {
+  color: #50575e;
+  text-decoration: none;
+}
+
+.wp-login-page .wp-login-powered a:hover {
+  color: #135e96;
+}
+
+.wp-login-page .clear {
+  clear: both;
+}

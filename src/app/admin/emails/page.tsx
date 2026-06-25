@@ -1,0 +1,22 @@
+import { redirect } from "next/navigation";
+import { isAdminAuthenticated } from "@/lib/auth";
+import AdminShell from "@/components/admin/AdminShell";
+import EmailComposer from "./EmailComposer";
+
+export default async function AdminEmailsPage() {
+  if (!(await isAdminAuthenticated())) {
+    redirect("/wp-login");
+  }
+
+  return (
+    <AdminShell active="emails">
+      <div className="mb-6">
+        <h1 className="text-[24px] font-bold">Emails</h1>
+        <p className="text-[13px] text-ft-muted mt-1">
+          Send WordPress-styled emails to any address via Resend
+        </p>
+      </div>
+      <EmailComposer />
+    </AdminShell>
+  );
+}
