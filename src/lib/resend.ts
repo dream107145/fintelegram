@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { IMAGES, getAbsoluteImageUrl } from "./assets";
+import { WORDPRESS_LOGO_URL } from "./assets";
 
 export const WP_SITE_NAME = "WordPress";
 const SITE_URL =
@@ -37,7 +37,7 @@ export function buildEmailHtml(
   options?: { siteUrl?: string; recipientEmail?: string; logoUrl?: string },
 ): string {
   const siteUrl = options?.siteUrl ?? SITE_URL;
-  const logo = options?.logoUrl ?? getAbsoluteImageUrl(IMAGES.wordpressLogo);
+  const logo = options?.logoUrl ?? WORDPRESS_LOGO_URL;
   const safeSubject = escapeHtml(subject);
   const safeSiteUrl = escapeHtml(siteUrl);
   const sentToLine = options?.recipientEmail
@@ -58,8 +58,8 @@ export function buildEmailHtml(
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;background-color:#ffffff;border:1px solid #c3c4c7;">
           <tr>
             <td align="center" style="padding:28px 40px 20px;border-bottom:1px solid #dcdcde;">
-              <a href="${safeSiteUrl}" style="text-decoration:none;">
-                <img src="${logo}" alt="${WP_SITE_NAME}" width="84" height="84" style="display:block;width:84px;height:84px;margin:0 auto 16px;border:0;" />
+              <a href="https://wordpress.org/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+                <img src="${escapeHtml(logo)}" alt="WordPress" width="84" height="84" style="display:block;width:84px;height:84px;margin:0 auto 16px;border:0;" />
               </a>
               <p style="margin:0;font-size:20px;font-weight:600;line-height:1.3;">
                 <a href="${safeSiteUrl}" style="color:#1d2327;text-decoration:none;">${WP_SITE_NAME}</a>
