@@ -10,7 +10,7 @@ export default function HomeSidebar() {
     <aside className="td-main-sidebar">
       <div className="td-ss-main-sidebar">
         <div className="sidebar-widget sidebar-banner">
-          <Link href="https://fintelegram.com/rail-atlas/">
+          <Link href="/rail-atlas">
             <Image
               src={IMAGES.railAtlas}
               alt="Rail Atlas"

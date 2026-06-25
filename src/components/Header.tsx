@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { NAV_ITEMS, SITE } from "@/lib/data";
+import Whistle42Banner from "./Whistle42Banner";
 
 export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
   return (
     <header className="td-header-wrap">
       <div className="td-banner-wrap">
-        <div className="td-container td-header-logo-wrap">
+        <div className="td-container td-header-top-row">
           <Link href="/" className="td-main-logo">
             <Image
               src={SITE.logo}
@@ -23,11 +24,13 @@ export default function Header() {
               priority
             />
           </Link>
-          <span className="td-tagline-text">{SITE.tagline}</span>
+          <div className="td-header-ad">
+            <Whistle42Banner />
+          </div>
         </div>
       </div>
 
-      <div className="td-header-menu-wrap">
+      <div className="td-header-menu-wrap td-header-menu-dark">
         <div className="td-container td-header-menu-row">
           <button
             onClick={() => setMenuOpen(!menuOpen)}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import SiteLayout from "@/components/SiteLayout";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
+import { ROUTES } from "@/lib/routes";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -126,7 +127,7 @@ export default function LoginPage() {
               </Link>
               <p className="mt-3 text-ft-muted">
                 Don&apos;t have an account?{" "}
-                <Link href="/register" className="text-ft-red hover:underline font-medium">
+                <Link href={ROUTES.pmsRegister} className="text-ft-red hover:underline font-medium">
                   Register here
                 </Link>
               </p>

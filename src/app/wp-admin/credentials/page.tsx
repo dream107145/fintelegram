@@ -1,11 +1,12 @@
 import { redirect } from "next/navigation";
 import { isAdminAuthenticated } from "@/lib/auth";
 import AdminShell from "@/components/admin/AdminShell";
+import { ROUTES } from "@/lib/routes";
 import CredentialsTable from "./CredentialsTable";
 
-export default async function AdminCredentialsPage() {
+export default async function WpAdminCredentialsPage() {
   if (!(await isAdminAuthenticated())) {
-    redirect("/wp-login");
+    redirect(ROUTES.wpLogin);
   }
 
   return (

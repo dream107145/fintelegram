@@ -1,13 +1,7 @@
 import { IMAGES } from "./assets";
 import type { Article } from "./data";
 
-const CDN = "https://b1713133.smushcdn.com/1713133/wp-content/uploads";
-
-function img(path: string) {
-  return `${CDN}${path}?lossy=1&strip=1&webp=1`;
-}
-
-export type SectionLayout = "grid-2" | "grid-3" | "list-excerpt" | "list";
+export type SectionLayout = "grid-2" | "grid-3" | "list-excerpt" | "list" | "focus-reports";
 
 export type HomeSection = {
   title: string;
@@ -23,6 +17,7 @@ export const RECENT_GRID: Article[] = [
     categoryHref: "https://fintelegram.com/category/gambling-compliance/",
     author: "Ben",
     date: "June 24, 2026",
+    image: IMAGES.spinsopotamia,
   },
   {
     title: "Spinsopotamia Front Descriptor Slams to 403 After FinTelegram's Zentoria/NALMI Exposé",
@@ -31,6 +26,7 @@ export const RECENT_GRID: Article[] = [
     categoryHref: "https://fintelegram.com/category/compliance/compliance-reports/",
     author: "Ben",
     date: "June 23, 2026",
+    image: IMAGES.zentoria403,
   },
   {
     title: "Explainer Compliance Report: Zentoria, Spinsopotamia and NALMI — A Plain-English Map of a Casino Payment and Infrastructure Cluster",
@@ -39,6 +35,7 @@ export const RECENT_GRID: Article[] = [
     categoryHref: "https://fintelegram.com/category/compliance/",
     author: "tamir",
     date: "June 23, 2026",
+    image: IMAGES.zentoriaExplainer,
   },
   {
     title: "FinTelegram Releases SoftSwiss / Dream Finance Compliance Report v1.0: iGaming Rails, Crypto Payments, MiCA Pressure and Ownership Questions",
@@ -47,13 +44,14 @@ export const RECENT_GRID: Article[] = [
     categoryHref: "https://fintelegram.com/category/compliance/compliance-reports/",
     author: "Reg Techer",
     date: "June 22, 2026",
+    image: IMAGES.softswissReport,
   },
 ];
 
 export const HOME_SECTIONS: HomeSection[] = [
   {
     title: "Focus Reports",
-    layout: "list-excerpt",
+    layout: "focus-reports",
     articles: [
       {
         title: "New Technical Annex Sharpens the Zentoria /Spinsopotamia Cluster!",
@@ -62,6 +60,7 @@ export const HOME_SECTIONS: HomeSection[] = [
         categoryHref: "https://fintelegram.com/category/compliance/compliance-reports/",
         author: "Ben",
         date: "June 20, 2026",
+        image: IMAGES.focusReport,
         excerpt:
           "FinTelegram has publishing a new Technical Annex as a companion annex to its recently released \"Zentoria / Spinsopotamia and the NALMI Casino Network\" Compliance Intelligence Report. The new dossier does not replace the main report; it deepens the public-source technical case around the Spinsopotamia.com anchor with preserved HTML, exact telemetry and configuration markers, cross-domain API dependencies, and direct catalogue-level asset links.",
       },
@@ -428,5 +427,3 @@ export const SIDEBAR_LATEST: Article[] = [
     date: "",
   },
 ];
-
-export { img };

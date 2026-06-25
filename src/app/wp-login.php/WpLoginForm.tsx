@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { IMAGES } from "@/lib/assets";
+import { ROUTES } from "@/lib/routes";
 
 export default function WpLoginForm() {
   const [username, setUsername] = useState("");
@@ -36,7 +37,7 @@ export default function WpLoginForm() {
         return;
       }
 
-      router.push("/wp-admin");
+      router.push(ROUTES.wpAdmin);
       router.refresh();
     } catch {
       setError(
@@ -71,7 +72,7 @@ export default function WpLoginForm() {
           <div
             className="wp-login-error"
             dangerouslySetInnerHTML={{
-              __html: `<strong>Error:</strong> ${error} <a href="/wp-login?action=lostpassword">Lost your password?</a>`,
+              __html: `<strong>Error:</strong> ${error} <a href="${ROUTES.wpLogin}?action=lostpassword">Lost your password?</a>`,
             }}
           />
         )}
@@ -129,11 +130,11 @@ export default function WpLoginForm() {
         </form>
 
         <p className="wp-login-lost">
-          <Link href="/wp-login?action=lostpassword">Lost your password?</Link>
+          <Link href={`${ROUTES.wpLogin}?action=lostpassword`}>Lost your password?</Link>
         </p>
 
         <p className="wp-login-back">
-          <Link href="/">&larr; Go to FinTelegram News</Link>
+          <Link href={ROUTES.home}>&larr; Go to FinTelegram News</Link>
         </p>
 
         <p className="wp-login-powered">

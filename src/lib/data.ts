@@ -9,11 +9,11 @@ export const SITE = {
 };
 
 export const NAV_ITEMS = [
-  { label: "Rail Atlas", href: "https://fintelegram.com/rail-atlas/" },
-  { label: "Complaints & Fact Checks", href: "https://fintelegram.com/category/complaints-fact-checks/" },
-  { label: "Law & Compliance Enforcement", href: "https://fintelegram.com/category/law-compliance-enforcement/" },
-  { label: "Whistleblower", href: "https://fintelegram.com/whistleblower/" },
-  { label: "Home", href: "/home" },
+  { label: "Home", href: "/" },
+  { label: "Whistleblower", href: "/whistleblower" },
+  { label: "Law & Compliance Enforcement", href: "/category/law-compliance-enforcement" },
+  { label: "Complaints & Fact Checks", href: "/category/complaints-fact-checks" },
+  { label: "Rail Atlas", href: "/rail-atlas" },
 ];
 
 export const SOCIAL_LINKS = [
@@ -51,6 +51,7 @@ export const FEATURED_ARTICLE: Article = {
   author: "Charlene Lensburg",
   date: "June 25, 2026",
   featured: true,
+  image: IMAGES.micaFeatured,
 };
 
 export const ARTICLES: Article[] = [

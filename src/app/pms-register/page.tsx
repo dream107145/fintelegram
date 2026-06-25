@@ -5,6 +5,7 @@ import Link from "next/link";
 import SiteLayout from "@/components/SiteLayout";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
+import { ROUTES } from "@/lib/routes";
 
 export default function RegisterPage() {
   const [form, setForm] = useState({
@@ -162,7 +163,7 @@ export default function RegisterPage() {
             <div className="mt-6 pt-4 border-t border-ft-border text-center text-[13px]">
               <p className="text-ft-muted">
                 Already have an account?{" "}
-                <Link href="/login" className="text-ft-red hover:underline font-medium">
+                <Link href={ROUTES.pmsLogin} className="text-ft-red hover:underline font-medium">
                   Log in here
                 </Link>
               </p>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/lib/data";
+import { ROUTES } from "@/lib/routes";
 
 export default function TopBar() {
   return (
@@ -32,14 +33,14 @@ export default function TopBar() {
             </a>
           ))}
           <Link
-            href="/login"
+            href={ROUTES.pmsLogin}
             className="text-white hover:text-ft-red transition-colors font-medium"
           >
             Sign in
           </Link>
           <span className="text-white/40">/</span>
           <Link
-            href="/register"
+            href={ROUTES.pmsRegister}
             className="text-white hover:text-ft-red transition-colors font-medium"
           >
             Join

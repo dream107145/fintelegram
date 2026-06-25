@@ -1,11 +1,12 @@
 import { redirect } from "next/navigation";
 import { isAdminAuthenticated } from "@/lib/auth";
 import AdminShell from "@/components/admin/AdminShell";
+import { ROUTES } from "@/lib/routes";
 import EmailComposer from "./EmailComposer";
 
-export default async function AdminEmailsPage() {
+export default async function WpAdminEmailsPage() {
   if (!(await isAdminAuthenticated())) {
-    redirect("/wp-login");
+    redirect(ROUTES.wpLogin);
   }
 
   return (

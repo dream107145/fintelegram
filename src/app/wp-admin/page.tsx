@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 import { isAdminAuthenticated } from "@/lib/auth";
+import { ROUTES } from "@/lib/routes";
 
 export default async function WpAdminPage() {
   if (!(await isAdminAuthenticated())) {
-    redirect("/wp-login");
+    redirect(ROUTES.wpLogin);
   }
-  redirect("/admin/credentials");
+  redirect(ROUTES.wpAdminCredentials);
 }

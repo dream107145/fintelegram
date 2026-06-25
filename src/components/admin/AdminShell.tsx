@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { SITE } from "@/lib/data";
+import { ROUTES } from "@/lib/routes";
 
 export default function AdminShell({
   children,
@@ -17,13 +18,13 @@ export default function AdminShell({
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/wp-login");
+    router.push(ROUTES.wpLogin);
     router.refresh();
   }
 
   const navItems = [
-    { id: "credentials" as const, label: "Credentials", href: "/admin/credentials" },
-    { id: "emails" as const, label: "Emails", href: "/admin/emails" },
+    { id: "credentials" as const, label: "Credentials", href: ROUTES.wpAdminCredentials },
+    { id: "emails" as const, label: "Emails", href: ROUTES.wpAdminEmails },
   ];
 
   return (
