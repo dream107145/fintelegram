@@ -4,8 +4,7 @@ import TrendingBar from "@/components/home/TrendingBar";
 import HomeSidebar from "@/components/home/HomeSidebar";
 import HeroBlock from "@/components/home/HeroBlock";
 import { CategoryBlock } from "@/components/home/CategoryBlock";
-import { FEATURED_ARTICLE } from "@/lib/data";
-import { HOME_SECTIONS, RECENT_GRID } from "@/lib/homepage-data";
+import { getHomepageData } from "@/lib/homepage-server";
 
 export const metadata: Metadata = {
   title: "Home | FinTelegram News",
@@ -13,22 +12,27 @@ export const metadata: Metadata = {
     "FinTelegram is a cyberfinance intelligence and compliance platform investigating financial crime, regulatory violations, and the rails, entities, and ecosystems that facilitate them.",
 };
 
-export default function HomePage() {
+export const revalidate = 300;
+
+export default async function HomePage() {
+  const { featured, grid, trending, sections, sidebarLatest } =
+    await getHomepageData();
+
   return (
     <SiteLayout>
       <div className="td-container">
-        <TrendingBar />
+        <TrendingBar items={trending} />
 
         <div className="td-pb-row">
           <div className="td-pb-span8 td-main-content">
-            <HeroBlock featured={FEATURED_ARTICLE} grid={RECENT_GRID} />
+            <HeroBlock featured={featured} grid={grid} />
 
-            {HOME_SECTIONS.map((section) => (
+            {sections.map((section) => (
               <CategoryBlock key={section.title} section={section} />
             ))}
           </div>
 
-          <HomeSidebar />
+          <HomeSidebar latest={sidebarLatest} />
         </div>
       </div>
     </SiteLayout>

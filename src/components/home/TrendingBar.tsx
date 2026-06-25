@@ -2,25 +2,30 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { TRENDING } from "@/lib/data";
 
-export default function TrendingBar() {
+type TrendingItem = { title: string; href: string };
+
+export default function TrendingBar({ items }: { items: TrendingItem[] }) {
   const [index, setIndex] = useState(0);
 
+  if (!items.length) return null;
+
   function prev() {
-    setIndex((i) => (i === 0 ? TRENDING.length - 1 : i - 1));
+    setIndex((i) => (i === 0 ? items.length - 1 : i - 1));
   }
 
   function next() {
-    setIndex((i) => (i === TRENDING.length - 1 ? 0 : i + 1));
+    setIndex((i) => (i === items.length - 1 ? 0 : i + 1));
   }
+
+  const current = items[index];
 
   return (
     <div className="td-trending-now">
       <div className="td-trending-now-title">Trending Now</div>
       <div className="td-trending-now-content">
-        <Link href="#" className="td-trending-now-post">
-          {TRENDING[index]}
+        <Link href={current.href} className="td-trending-now-post">
+          {current.title}
         </Link>
       </div>
       <div className="td-trending-now-nav">

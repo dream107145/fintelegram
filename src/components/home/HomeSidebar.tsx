@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { IMAGES } from "@/lib/assets";
 import { SITE } from "@/lib/data";
-import { SIDEBAR_LATEST } from "@/lib/homepage-data";
+import type { Article } from "@/lib/data";
 import { BlockTitle, CategoryPill, PostTitle, PostMeta } from "./PostParts";
 
-export default function HomeSidebar() {
+export default function HomeSidebar({ latest }: { latest: Article[] }) {
   return (
     <aside className="td-main-sidebar">
       <div className="td-ss-main-sidebar">
@@ -24,8 +24,8 @@ export default function HomeSidebar() {
         <div className="sidebar-widget">
           <BlockTitle title="Latest" />
           <div className="sidebar-latest">
-            {SIDEBAR_LATEST.map((article) => (
-              <article key={article.title} className="sidebar-latest-item">
+            {latest.map((article) => (
+              <article key={article.href} className="sidebar-latest-item">
                 <CategoryPill category={article.category} href={article.categoryHref} />
                 <PostTitle article={article} level={4} />
                 <PostMeta article={article} />

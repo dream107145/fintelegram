@@ -39,6 +39,7 @@ export default function Whistle42Banner() {
         width={728}
         height={90}
         className="whistle42-banner-img"
+        style={{ width: "auto", height: "90px", maxWidth: "100%" }}
         onError={() => setImgError(true)}
       />
     </Link>

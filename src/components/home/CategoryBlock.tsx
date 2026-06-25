@@ -10,11 +10,13 @@ function Grid3Posts({ articles }: { articles: Article[] }) {
     <div className="td-block-row grid-3-posts">
       {articles.map((article) => (
         <article key={article.title} className="td-module-wrap">
-          {article.image && (
-            <Link href={article.href} className="post-thumb-sm">
+          <Link href={article.href} className="post-thumb-sm">
+            {article.image ? (
               <Image src={article.image} alt={article.title} width={218} height={150} className="w-full h-auto" />
-            </Link>
-          )}
+            ) : (
+              <div className="post-thumb-placeholder" />
+            )}
+          </Link>
           <CategoryPill category={article.category} href={article.categoryHref} />
           <PostTitle article={article} level={3} />
           <PostMeta article={article} />

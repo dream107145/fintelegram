@@ -45,9 +45,9 @@ export type Article = {
 export const FEATURED_ARTICLE: Article = {
   title:
     "MiCA Countdown: Europe's Crypto Grey Zone Dies On 1 July 2026 — And Poland May Become The First Regulatory Casualty",
-  href: "https://fintelegram.com/mica-countdown-europes-crypto-grey-zone-dies-on-1-july-2026/",
+  href: "https://fintelegram.com/mica-deadline-1-july-2026-esma-eu-crypto-grey-zone-poland/",
   category: "CASP",
-  categoryHref: "https://fintelegram.com/category/casp/",
+  categoryHref: "https://fintelegram.com/category/compliance/crypto-compliance/casp/",
   author: "Charlene Lensburg",
   date: "June 25, 2026",
   featured: true,
