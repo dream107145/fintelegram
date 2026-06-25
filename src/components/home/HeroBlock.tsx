@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import Link from "next/link";
 import type { Article } from "@/lib/data";
 import { IMAGES } from "@/lib/assets";
@@ -15,7 +15,7 @@ function OverlayModule({
   return (
     <article className={`td-module-overlay ${size === "large" ? "td-module-overlay-lg" : "td-module-overlay-sm"}`}>
       <Link href={article.href} className="td-module-overlay-link">
-        <Image
+        <ProxiedImage
           src={image}
           alt={article.title}
           fill

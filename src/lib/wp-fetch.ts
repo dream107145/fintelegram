@@ -1,6 +1,7 @@
+import { proxyImageUrl, toSmushCdnUrl } from "./image-proxy";
+
 const JINA_PROXY = "https://r.jina.ai/";
 const WP_API = "https://fintelegram.com/wp-json/wp/v2";
-const SMUSH_CDN = "https://b1713133.smushcdn.com/1713133/wp-content/uploads";
 
 export type WpPost = {
   id: number;
@@ -70,17 +71,7 @@ export function stripHtml(html: string): string {
 
 export function toSmushCdn(url: string | undefined): string | undefined {
   if (!url) return undefined;
-
-  if (url.includes("smushcdn.com")) {
-    return url.includes("?") ? url : `${url}?lossy=1&strip=1&webp=1`;
-  }
-
-  const match = url.match(/wp-content\/uploads\/(.+)$/);
-  if (match) {
-    return `${SMUSH_CDN}/${match[1]}?lossy=1&strip=1&webp=1`;
-  }
-
-  return url;
+  return proxyImageUrl(toSmushCdnUrl(url));
 }
 
 export function formatPostDate(iso: string): string {

@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const ALLOWED_HOSTS = new Set([
-  "fintelegram.com",
-  "b1713133.smushcdn.com",
-  "www.fintelegram.com",
-]);
+import { fetchRemoteImage, isAllowedImageHost } from "@/lib/server-image";
 
 export async function GET(request: NextRequest) {
   const raw = request.nextUrl.searchParams.get("url");
@@ -19,30 +14,22 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Invalid url" }, { status: 400 });
   }
 
-  if (!ALLOWED_HOSTS.has(target.hostname)) {
+  if (target.protocol !== "https:" || !isAllowedImageHost(target.hostname)) {
     return NextResponse.json({ error: "Host not allowed" }, { status: 403 });
   }
 
-  const fetchUrl =
-    target.hostname === "fintelegram.com" || target.hostname === "www.fintelegram.com"
-      ? `https://r.jina.ai/${target.toString()}`
-      : target.toString();
+  try {
+    const upstream = await fetchRemoteImage(target);
+    const contentType = upstream.headers.get("content-type") ?? "image/jpeg";
+    const buffer = await upstream.arrayBuffer();
 
-  const upstream = await fetch(fetchUrl, {
-    next: { revalidate: 3600 },
-  });
-
-  if (!upstream.ok) {
-    return NextResponse.json({ error: "Upstream failed" }, { status: upstream.status });
+    return new NextResponse(buffer, {
+      headers: {
+        "Content-Type": contentType,
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+      },
+    });
+  } catch {
+    return NextResponse.json({ error: "Upstream failed" }, { status: 502 });
   }
-
-  const contentType = upstream.headers.get("content-type") ?? "image/jpeg";
-  const buffer = await upstream.arrayBuffer();
-
-  return new NextResponse(buffer, {
-    headers: {
-      "Content-Type": contentType,
-      "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
-    },
-  });
 }

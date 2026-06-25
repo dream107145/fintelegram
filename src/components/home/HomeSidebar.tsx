@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import Link from "next/link";
 import { IMAGES } from "@/lib/assets";
 import { SITE } from "@/lib/data";
@@ -11,7 +11,7 @@ export default function HomeSidebar({ latest }: { latest: Article[] }) {
       <div className="td-ss-main-sidebar">
         <div className="sidebar-widget sidebar-banner">
           <Link href="/rail-atlas">
-            <Image
+            <ProxiedImage
               src={IMAGES.railAtlas}
               alt="Rail Atlas"
               width={324}

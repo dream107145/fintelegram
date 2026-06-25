@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import { SOCIAL_LINKS } from "@/lib/data";
 import type { Article } from "@/lib/data";
 import { BlockTitle, CategoryPill, PostMeta, PostTitle } from "./PostParts";
@@ -16,7 +16,7 @@ export default function FocusReportsBlock({ articles }: { articles: Article[] })
             <article className="focus-lead">
               {lead.image && (
                 <Link href={lead.href} className="focus-lead-image">
-                  <Image
+                  <ProxiedImage
                     src={lead.image}
                     alt={lead.title}
                     width={360}
@@ -37,7 +37,7 @@ export default function FocusReportsBlock({ articles }: { articles: Article[] })
               <article key={article.title} className="focus-list-item">
                 {article.image && (
                   <Link href={article.href} className="focus-list-thumb">
-                    <Image
+                    <ProxiedImage
                       src={article.image}
                       alt={article.title}
                       width={100}

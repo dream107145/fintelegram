@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/auth";
 import { getSupabaseAdmin } from "@/lib/supabase";
-import { getResend, getFromEmail, buildEmailHtml } from "@/lib/resend";
+import { getResend, getFromEmail, buildEmailHtml, formatWordPressSubject } from "@/lib/resend";
 
 export async function GET() {
   if (!(await isAdminAuthenticated())) {
@@ -40,20 +40,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const html = buildEmailHtml(subject, body);
+    const emailSubject = formatWordPressSubject(subject);
+    const html = buildEmailHtml(emailSubject, body, { recipientEmail: to });
     const resend = getResend();
 
     const { data, error } = await resend.emails.send({
       from: getFromEmail(),
       to: [to],
-      subject,
+      subject: emailSubject,
       html,
     });
 
     const supabase = getSupabaseAdmin();
     await supabase.from("email_logs").insert({
       to_email: to,
-      subject,
+      subject: emailSubject,
       body_html: html,
       status: error ? "failed" : "sent",
       resend_id: data?.id || null,

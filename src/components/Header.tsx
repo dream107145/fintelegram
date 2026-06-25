@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import Link from "next/link";
 import { useState } from "react";
 import { NAV_ITEMS, SITE } from "@/lib/data";
@@ -15,7 +15,7 @@ export default function Header() {
       <div className="td-banner-wrap">
         <div className="td-container td-header-top-row">
           <Link href="/" className="td-main-logo">
-            <Image
+            <ProxiedImage
               src={SITE.logo}
               alt="FinTelegram"
               width={280}

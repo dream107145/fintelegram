@@ -2,8 +2,7 @@
 
 import { useState, useEffect, FormEvent, useCallback } from "react";
 import type { EmailLog } from "@/lib/supabase";
-import { buildEmailHtml } from "@/lib/resend";
-import { IMAGES } from "@/lib/assets";
+import { buildEmailHtml, formatWordPressSubject } from "@/lib/resend";
 
 export default function EmailComposer() {
   const [to, setTo] = useState("");
@@ -61,7 +60,11 @@ export default function EmailComposer() {
     }
   }
 
-  const previewHtml = subject && body ? buildEmailHtml(subject, body, IMAGES.wordpressLogo) : "";
+  const previewSubject = subject ? formatWordPressSubject(subject) : "";
+  const previewHtml =
+    subject && body
+      ? buildEmailHtml(previewSubject, body, { recipientEmail: to || "user@example.com" })
+      : "";
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">

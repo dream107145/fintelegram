@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import { useRouter, usePathname } from "next/navigation";
 import { SITE } from "@/lib/data";
 import { ROUTES } from "@/lib/routes";
@@ -31,7 +31,7 @@ export default function AdminShell({
     <div className="min-h-screen bg-ft-light-gray flex">
       <aside className="w-[240px] bg-ft-black text-white shrink-0 flex flex-col">
         <div className="p-5 border-b border-white/10">
-          <Image
+          <ProxiedImage
             src={SITE.logo}
             alt="FinTelegram"
             width={160}

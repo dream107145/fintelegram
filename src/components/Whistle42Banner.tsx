@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import { IMAGES } from "@/lib/assets";
 
 export default function Whistle42Banner() {
@@ -33,7 +33,7 @@ export default function Whistle42Banner() {
       rel="noopener noreferrer"
       className="whistle42-banner"
     >
-      <Image
+      <ProxiedImage
         src={IMAGES.whistle42Banner}
         alt="Whistle42 - Secure Info to Whistle42.com"
         width={728}

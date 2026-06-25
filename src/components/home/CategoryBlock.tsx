@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import Link from "next/link";
 import type { Article } from "@/lib/data";
 import type { HomeSection } from "@/lib/homepage-data";
@@ -12,7 +12,7 @@ function Grid3Posts({ articles }: { articles: Article[] }) {
         <article key={article.title} className="td-module-wrap">
           <Link href={article.href} className="post-thumb-sm">
             {article.image ? (
-              <Image src={article.image} alt={article.title} width={218} height={150} className="w-full h-auto" />
+              <ProxiedImage src={article.image} alt={article.title} width={218} height={150} className="w-full h-auto" />
             ) : (
               <div className="post-thumb-placeholder" />
             )}
@@ -37,7 +37,7 @@ function ListExcerptPosts({ articles }: { articles: Article[] }) {
         >
           {article.image && (
             <Link href={article.href} className="post-thumb">
-              <Image
+              <ProxiedImage
                 src={article.image}
                 alt={article.title}
                 width={696}

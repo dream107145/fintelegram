@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import { useRouter } from "next/navigation";
 import { IMAGES } from "@/lib/assets";
 import { ROUTES } from "@/lib/routes";
@@ -58,7 +58,7 @@ export default function WpLoginForm() {
             rel="noopener noreferrer"
             title="Powered by WordPress"
           >
-            <Image
+            <ProxiedImage
               src={IMAGES.wordpressLogo}
               alt="WordPress"
               width={84}

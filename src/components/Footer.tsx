@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import Link from "next/link";
 import { SITE, SOCIAL_LINKS } from "@/lib/data";
 
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="td-container py-10">
         <div className="flex flex-col items-center text-center">
           <Link href="/" className="mb-6">
-            <Image
+            <ProxiedImage
               src={SITE.footerLogo}
               alt="FinTelegram"
               width={200}

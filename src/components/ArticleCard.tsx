@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import ProxiedImage from "@/components/ProxiedImage";
 import type { Article } from "@/lib/data";
 
 export default function ArticleCard({
@@ -38,7 +38,7 @@ export default function ArticleCard({
     return (
       <article className="mb-6">
         <Link href={article.href} className="block mb-3 overflow-hidden">
-          <Image
+          <ProxiedImage
             src={article.image}
             alt={article.title}
             width={680}
