@@ -6,7 +6,7 @@ import { SOCIAL_LINKS } from "@/lib/data";
 export default function TopBar() {
   return (
     <div className="bg-ft-black text-white text-[11px]">
-      <div className="max-w-[1068px] mx-auto px-4 flex items-center justify-between h-[32px]">
+      <div className="td-container flex items-center justify-between h-[34px]">
         <div className="flex items-center gap-3">
           <span className="text-white/70">3.9&deg;C</span>
           <span className="text-white/50">New York</span>

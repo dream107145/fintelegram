@@ -5,7 +5,7 @@ import { SITE, SOCIAL_LINKS } from "@/lib/data";
 export default function Footer() {
   return (
     <footer className="bg-ft-black text-white mt-auto">
-      <div className="max-w-[1068px] mx-auto px-4 py-10">
+      <div className="td-container py-10">
         <div className="flex flex-col items-center text-center">
           <Link href="/" className="mb-6">
             <Image
