@@ -13,7 +13,7 @@ export const NAV_ITEMS = [
   { label: "Complaints & Fact Checks", href: "https://fintelegram.com/category/complaints-fact-checks/" },
   { label: "Law & Compliance Enforcement", href: "https://fintelegram.com/category/law-compliance-enforcement/" },
   { label: "Whistleblower", href: "https://fintelegram.com/whistleblower/" },
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
 ];
 
 export const SOCIAL_LINKS = [

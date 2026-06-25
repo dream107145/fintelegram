@@ -22,9 +22,9 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Home | FinTelegram News",
+  title: "FinTelegram – Exposing Financial Crime & Regulatory Failures",
   description:
-    "FinTelegram is a cyberfinance intelligence and compliance platform investigating financial crime, regulatory violations, and the rails, entities, and ecosystems that facilitate them.",
+    "FinTelegram is a cyber finance intelligence platform focused on exposing financial crime, regulatory violations, and high-risk investment schemes.",
   icons: {
     icon: IMAGES.favicon,
     shortcut: IMAGES.favicon,

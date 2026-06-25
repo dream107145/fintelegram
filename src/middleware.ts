@@ -25,5 +25,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/pms-login", "/pms-register", "/wp-login.php", "/wp-admin"],
+  matcher: ["/pms-login", "/pms-register", "/wp-login.php", "/wp-admin", "/front-page"],
 };
