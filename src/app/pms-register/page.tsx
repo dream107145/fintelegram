@@ -5,7 +5,7 @@ import Link from "next/link";
 import SiteLayout from "@/components/SiteLayout";
 import Breadcrumb from "@/components/Breadcrumb";
 import { SITE } from "@/lib/data";
-import { ROUTES } from "@/lib/routes";
+import { ROUTES, REAL_SITE_URLS } from "@/lib/routes";
 
 export default function RegisterPage() {
   const [form, setForm] = useState({
@@ -47,10 +47,7 @@ export default function RegisterPage() {
         throw new Error(data.error || "Registration failed");
       }
 
-      setMessage(
-        "Thank you for your application. Your membership request has been received and is pending review."
-      );
-      setForm({ username: "", email: "", password: "", confirmPassword: "" });
+      window.location.href = data.redirect || REAL_SITE_URLS.pmsRegister;
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
     } finally {

